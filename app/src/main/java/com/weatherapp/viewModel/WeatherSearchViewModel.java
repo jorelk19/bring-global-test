@@ -14,7 +14,7 @@ public class WeatherSearchViewModel extends ViewModel  {
     private MutableLiveData<Weather> weatherMutableData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Weather>> weatherListMutableData = new MutableLiveData<>();
     private MutableLiveData<Boolean> showWeatherInformation = new MutableLiveData<>();
-    public MutableLiveData<Boolean> deleteWeatherInformation = new MutableLiveData<>();
+    public MutableLiveData<Weather> deleteWeatherInformation = new MutableLiveData<>();
 
     public WeatherSearchViewModel(WeatherDataSource dataSource) {
         weatherDataSource = dataSource;
@@ -30,7 +30,7 @@ public class WeatherSearchViewModel extends ViewModel  {
     public LiveData<Boolean> showWeatherInformationLiveData(){
         return showWeatherInformation;
     }
-    public LiveData<Boolean> deleteWeatherInformationLiveData(){
+    public LiveData<Weather> deleteWeatherInformationLiveData(){
         return deleteWeatherInformation;
     }
     public void saveBookmark(Weather weather){
@@ -38,6 +38,11 @@ public class WeatherSearchViewModel extends ViewModel  {
     }
 
     public void getAllBookmarksDB(){
+        weatherDataSource.getAllBookmarkDB(weatherListMutableData);
+    }
+
+    public void deleteBookMark(Weather weather){
+        weatherDataSource.deleteBookmarkDB(weather);
         weatherDataSource.getAllBookmarkDB(weatherListMutableData);
     }
 }

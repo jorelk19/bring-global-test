@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class HomeSearchWeatherAdapter extends RecyclerView.Adapter<HomeSearchWeatherViewHolder> {
     private LayoutWeatherListItemBinding layoutWeatherListItemBinding;
     ArrayList<Weather> weatherList = new ArrayList<>();
-    private MutableLiveData<Boolean> deleteBookmark;
+    private MutableLiveData<Weather> deleteBookmark;
 
     @NonNull
     @Override
@@ -36,7 +36,7 @@ public class HomeSearchWeatherAdapter extends RecyclerView.Adapter<HomeSearchWea
         return weatherList.size();
     }
 
-    public void setBookmarkInformation(ArrayList<Weather> list, MutableLiveData<Boolean> delBookmark) {
+    public void setBookmarkInformation(ArrayList<Weather> list, MutableLiveData<Weather> delBookmark) {
         deleteBookmark = delBookmark;
         weatherList.clear();
         weatherList.addAll(list);

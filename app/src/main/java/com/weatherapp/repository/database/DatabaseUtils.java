@@ -45,7 +45,7 @@ public class DatabaseUtils {
                 line = reader.readLine();
             }
             DatabaseManager.getInstanceDB(applicationManager.getCurrentContext()).setUpDatabase();
-            SQLiteDatabase db = DatabaseManager.getInstanceDB(applicationManager.getCurrentContext()).getReadableDatabase();
+            SQLiteDatabase db = DatabaseManager.getInstanceDB(applicationManager.getCurrentContext()).getWriteable();
             String finalQuery = "";
             if (whereBody != "") {
                 finalQuery = content.toString().replace(":queryValues", " " + whereBody);
@@ -60,7 +60,7 @@ public class DatabaseUtils {
 
     // Read Sql file and replace it with 'where' expression
     private Cursor readSqlFileAndReplace(String nameFile, String whereBody) {
-        SQLiteDatabase db = DatabaseManager.getInstanceDB(applicationManager.getCurrentContext()).getReadableDatabase();
+        SQLiteDatabase db = DatabaseManager.getInstanceDB(applicationManager.getCurrentContext()).getReadable();
         String finalQuery = "";
         try {
             InputStream inputStream = applicationManager.getCurrentContext().getResources().getAssets().open(nameFile);
@@ -72,7 +72,6 @@ public class DatabaseUtils {
                 content.append(line);
                 line = reader.readLine();
             }
-            DatabaseManager.getInstanceDB(applicationManager.getCurrentContext()).setUpDatabase();
 
             if (whereBody != "") {
                 finalQuery = content.toString().replace(":queryValues", " " + whereBody);

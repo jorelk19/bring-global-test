@@ -1,3 +1,4 @@
-DELETE
-FROM weather
+ DELETE
+
+ FROM weather
     :queryValues

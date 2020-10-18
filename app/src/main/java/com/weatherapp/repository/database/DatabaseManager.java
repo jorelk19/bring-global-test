@@ -26,8 +26,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public static DatabaseManager getInstanceDB(Context context) {
         if (instance == null) {
             instance = new DatabaseManager(context);
-            instance.databaseSetUp();
         }
+        instance.databaseSetUp();
         return instance;
     }
 
