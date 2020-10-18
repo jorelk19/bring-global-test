@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.MapsFragment" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weatherContainer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen200"
+            android:layout_margin="@dimen/dimen50"
+            android:visibility="gone"
+            android:background="@drawable/custom_background_corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/weatherContainerInformation"
+                android:text="@string/map_weather_container_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryLight"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivTemperature"
+                android:layout_width="@dimen/dimen30"
+                android:layout_height="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen20"
+                android:layout_marginTop="@dimen/dimen20"
+                android:src="@drawable/ic_temperature"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weatherContainerInformation" />
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="@dimen/dimen50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryLight"
+                app:layout_constraintBottom_toBottomOf="@+id/ivTemperature"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivTemperature"
+                app:layout_constraintTop_toTopOf="@+id/ivTemperature" />
+
+
+            <ImageView
+                android:id="@+id/ivHumidity"
+                android:layout_width="@dimen/dimen30"
+                android:layout_height="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen20"
+                android:layout_marginTop="@dimen/dimen10"
+                android:src="@drawable/ic_humidity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivTemperature" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="@dimen/dimen50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryLight"
+                app:layout_constraintBottom_toBottomOf="@+id/ivHumidity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivHumidity"
+                app:layout_constraintTop_toTopOf="@+id/ivHumidity" />
+
+            <ImageView
+                android:id="@+id/ivRain"
+                android:layout_width="@dimen/dimen30"
+                android:layout_height="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen20"
+                android:layout_marginTop="@dimen/dimen10"
+                android:src="@drawable/ic_rain"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivHumidity" />
+
+            <TextView
+                android:id="@+id/tvRain"
+                android:layout_width="@dimen/dimen50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryLight"
+                app:layout_constraintBottom_toBottomOf="@+id/ivRain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivRain"
+                app:layout_constraintTop_toTopOf="@+id/ivRain" />
+
+            <ImageView
+                android:id="@+id/ivWindy"
+                android:layout_width="@dimen/dimen30"
+                android:layout_height="@dimen/dimen30"
+                android:layout_marginStart="@dimen/dimen20"
+                android:layout_marginTop="@dimen/dimen10"
+                android:src="@drawable/ic_windy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivRain" />
+
+            <TextView
+                android:id="@+id/tvWindy"
+                android:layout_width="@dimen/dimen50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryLight"
+                app:layout_constraintBottom_toBottomOf="@+id/ivWindy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivWindy"
+                app:layout_constraintTop_toTopOf="@+id/ivWindy" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

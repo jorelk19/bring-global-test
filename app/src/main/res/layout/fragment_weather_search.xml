@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mapOptionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvMapTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen80"
+                android:gravity="center"
+                android:text="@string/weather_search_maps_title"
+                android:textSize="@dimen/textSize20"
+                app:layout_constraintBottom_toBottomOf="@+id/mapOptionContainer"
+                app:layout_constraintStart_toStartOf="@+id/mapOptionContainer"
+                app:layout_constraintTop_toTopOf="@+id/mapOptionContainer" />
+
+            <ImageView
+                android:layout_width="@dimen/dimen50"
+                android:layout_height="@dimen/dimen50"
+                android:layout_marginStart="@dimen/dimen50"
+                android:src="@drawable/ic_map_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/mapOptionContainer"
+                app:layout_constraintEnd_toEndOf="@+id/mapOptionContainer"
+                app:layout_constraintStart_toEndOf="@+id/tvMapTitle"
+                app:layout_constraintTop_toTopOf="@+id/mapOptionContainer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/employeeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen30"
+            android:text="@string/weather_search_saved_list_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapOptionContainer"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBookmark"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/dimen20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/employeeTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

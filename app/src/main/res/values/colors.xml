@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFC107</color>
+    <color name="colorPrimaryDark">#FFA000</color>
+    <color name="colorAccent">#448AFF</color>
+    <color name="colorAccentAlpha">#66448AFF</color>
+    <color name="colorPrimaryLight">#FFECB3</color>
+
+    <color name="fontPlaceholder">#ffc2c2c2</color>
+    <color name="statusYellowLabel">#ff7d6c29</color>
+</resources>
