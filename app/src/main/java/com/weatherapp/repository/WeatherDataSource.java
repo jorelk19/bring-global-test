@@ -61,7 +61,7 @@ public class WeatherDataSource {
         weatherApi.getWeatherByLocation(lat, lng, BuildConfig.API_KEY, "metric")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<Weather>() {
+                .subscribeWith(new DisposableSingleObserver<Weather>() {
                     @Override
                     public void onSuccess(Weather weatherResponse) {
                         if (weatherResponse != null) {
@@ -81,22 +81,22 @@ public class WeatherDataSource {
                 });
     }
 
-    public void getAllBookmarkDB(MutableLiveData<ArrayList<Weather>> weatherListMutableData){
+    public void getAllBookmarkDB(MutableLiveData<ArrayList<Weather>> weatherListMutableData) {
         weatherListMutableData.setValue(localDataSource.runGetAllWeatherQuery());
     }
 
-    public void getBookmarkByIdDB(Weather weather){
+    public void getBookmarkByIdDB(Weather weather) {
         localDataSource.runGetWeatherQuery(weather.getId());
     }
 
-    public void saveBookmarkDB(Weather weather){
+    public void saveBookmarkDB(Weather weather) {
         Gson gson = new Gson();
-        String values =  String.valueOf(weather.getId()) + ",'" + gson.toJson(weather) + "'";
+        String values = String.valueOf(weather.getId()) + ",'" + gson.toJson(weather) + "'";
         localDataSource.runDeleteWeatherQuery(weather.getId());
         localDataSource.runCreateWeatherQuery(values);
     }
 
-    public void deleteBookmarkDB(Weather weather){
+    public void deleteBookmarkDB(Weather weather) {
         localDataSource.runDeleteWeatherQuery(weather.getId());
     }
 }
