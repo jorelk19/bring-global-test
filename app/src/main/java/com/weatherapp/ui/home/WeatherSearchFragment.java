@@ -51,10 +51,8 @@ public class WeatherSearchFragment extends Fragment implements SaveBookmark {
     }
 
     private void addSubscriptions() {
-        weatherSearchViewModel.deleteWeatherInformationLiveData().observe(getViewLifecycleOwner(), isDeleting -> {
-            if (isDeleting) {
-                showDialog();
-            }
+        weatherSearchViewModel.deleteWeatherInformationLiveData().observe(getViewLifecycleOwner(), weather -> {
+            weatherSearchViewModel.deleteBookMark(weather);
         });
 
         weatherSearchViewModel.getWeatherListLiveData().observe(getViewLifecycleOwner(), weatherList -> {

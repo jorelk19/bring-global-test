@@ -12,6 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen30"
+            android:background="@drawable/custom_border_corner_radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -20,6 +21,7 @@
                 android:id="@+id/tvMapTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen80"
+                android:layout_marginStart="@dimen/dimen20"
                 android:gravity="center"
                 android:text="@string/weather_search_maps_title"
                 android:textSize="@dimen/textSize20"
@@ -46,7 +48,7 @@
             android:text="@string/weather_search_saved_list_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapOptionContainer"/>
+            app:layout_constraintTop_toBottomOf="@+id/mapOptionContainer" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBookmark"

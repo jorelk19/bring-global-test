@@ -3,9 +3,12 @@ package com.weatherapp.utils;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +33,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.weatherapp.BaseApp;
 import com.weatherapp.R;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 public class MapManager extends Fragment implements OnMapReadyCallback,
         LocationListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
@@ -41,6 +49,7 @@ public class MapManager extends Fragment implements OnMapReadyCallback,
     private Location mLastLocation;
     private Marker mCurrLocationMarker;
     private OnMapTouched onMapTouched;
+    private String locationName;
 
     /**
      * Manipulates the map once available.
@@ -72,8 +81,9 @@ public class MapManager extends Fragment implements OnMapReadyCallback,
 
                 // Setting the title for the marker.
                 // This will be displayed on taping the marker
+                getLocationName(latLng.latitude, latLng.longitude);
                 onMapTouched.getWeatherOnTouchMap(latLng.latitude, latLng.longitude);
-                onMapTouched.showWeatherInformation(false);
+                onMapTouched.showWeatherInformation(false, locationName);
                 markerOptions.title(latLng.latitude + " : " + latLng.longitude);
 
                 // Clears the previously touched position
@@ -86,6 +96,21 @@ public class MapManager extends Fragment implements OnMapReadyCallback,
                 mMap.addMarker(markerOptions);
             }
         });
+    }
+
+    private void getLocationName(double latitude, double longitude) {
+        try {
+
+            Geocoder gcd = new Geocoder(BaseApp.getApplicationManager().getCurrentContext(), Locale.getDefault());
+            List<Address> addresses = gcd.getFromLocation(latitude, longitude, 1);
+            if (addresses.size() > 0) {
+                locationName = addresses.get(0).getLocality();
+            } else {
+                // do your stuff
+            }
+        }catch (IOException exception){
+            Log.d("GET LOCATION NAME ERROR", exception.getMessage());
+        }
     }
 
     @Override
@@ -236,7 +261,8 @@ public class MapManager extends Fragment implements OnMapReadyCallback,
         Marker perth = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .draggable(true));
-        onMapTouched.showWeatherInformation(true);
+        getLocationName(latLng.latitude, latLng.longitude);
+        onMapTouched.showWeatherInformation(true, locationName);
 
         return false;
     }

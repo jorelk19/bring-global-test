@@ -11,14 +11,17 @@ import com.weatherapp.model.Weather;
 
 public class HomeSearchWeatherViewHolder extends RecyclerView.ViewHolder {
     private LayoutWeatherListItemBinding layoutWeatherListItemBinding;
-    private MutableLiveData<Boolean> deleteBookmark;
+    private MutableLiveData<Weather> deleteBookmark;
+    private Weather currentWeather;
+
     public HomeSearchWeatherViewHolder(@NonNull LayoutWeatherListItemBinding itemView) {
         super(itemView.getRoot());
         layoutWeatherListItemBinding = itemView;
         setListener();
     }
 
-    public void bind(Weather weather, MutableLiveData<Boolean> delBookmark){
+    public void bind(Weather weather, MutableLiveData<Weather> delBookmark){
+        currentWeather = weather;
         layoutWeatherListItemBinding.tvLocationName.setText(weather.getLocationName());
         deleteBookmark = delBookmark;
     }
@@ -27,7 +30,7 @@ public class HomeSearchWeatherViewHolder extends RecyclerView.ViewHolder {
         layoutWeatherListItemBinding.btnDeleteBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteBookmark.setValue(true);
+                deleteBookmark.setValue(currentWeather);
             }
         });
     }

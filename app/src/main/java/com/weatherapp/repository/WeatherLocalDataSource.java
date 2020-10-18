@@ -59,7 +59,7 @@ public class WeatherLocalDataSource {
             where = DEFAULT_WHERE_WEATHER + String.valueOf(id);
         }
 
-        databaseUtils.execSQLQuery("queries/DeleteWeatherQuery", where);
+        databaseUtils.execSQLQuery("queries/DeleteWeatherQuery.sql", where);
         return true;
     }
 
