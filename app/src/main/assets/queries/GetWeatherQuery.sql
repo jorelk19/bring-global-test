@@ -1,4 +1,5 @@
-SELECT id,
-       weatherJson,
-FROM weather
+ SELECT id,
+       weatherJson
+
+ FROM weather
        :queryValues

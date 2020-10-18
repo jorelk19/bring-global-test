@@ -14,13 +14,16 @@
             android:layout_marginTop="@dimen/dimen20"
             android:src="@drawable/ic_temperature"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvLocationName"
-            android:layout_width="@dimen/dimen50"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryLight"
+            android:layout_marginStart="@dimen/dimen20"
+            android:layout_marginEnd="@dimen/dimen20"
+            android:gravity="center"
+            android:textColor="@color/fontPlaceholder"
             app:layout_constraintBottom_toBottomOf="@+id/ivLocation"
             app:layout_constraintEnd_toStartOf="@+id/btnDeleteBookmark"
             app:layout_constraintStart_toEndOf="@+id/ivLocation"
@@ -30,8 +33,8 @@
             android:id="@+id/btnDeleteBookmark"
             android:layout_width="@dimen/dimen50"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryLight"
             android:src="@drawable/ic_trash"
+            android:textColor="@color/colorPrimaryLight"
             app:layout_constraintBottom_toBottomOf="@+id/ivLocation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ivLocation" />

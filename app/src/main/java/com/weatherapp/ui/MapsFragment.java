@@ -76,8 +76,9 @@ public class MapsFragment extends MapManager implements OnMapTouched {
     }
 
     @Override
-    public void showWeatherInformation(boolean isShowing) {
+    public void showWeatherInformation(boolean isShowing, String locationName) {
         if (isShowing) {
+            currentWeather.setLocationName(locationName);
             onSaveBookmark.onTapMapBookmark(currentWeather);
             fragmentMapsBinding.weatherContainer.setVisibility(View.VISIBLE);
         } else {
