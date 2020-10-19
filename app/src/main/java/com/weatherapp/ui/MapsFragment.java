@@ -39,7 +39,7 @@ public class MapsFragment extends MapManager implements OnMapTouched {
         mapFragment.getMapAsync(this);
         setOnMapTouched(this);
         addSubscriptions();
-
+        checkLocationPermission();
         return fragmentMapsBinding.getRoot();
     }
 
@@ -78,9 +78,11 @@ public class MapsFragment extends MapManager implements OnMapTouched {
     @Override
     public void showWeatherInformation(boolean isShowing, String locationName) {
         if (isShowing) {
-            currentWeather.setLocationName(locationName);
-            onSaveBookmark.onTapMapBookmark(currentWeather);
-            fragmentMapsBinding.weatherContainer.setVisibility(View.VISIBLE);
+            if(currentWeather != null) {
+                currentWeather.setLocationName(locationName);
+                onSaveBookmark.onTapMapBookmark(currentWeather);
+                fragmentMapsBinding.weatherContainer.setVisibility(View.VISIBLE);
+            }
         } else {
             fragmentMapsBinding.weatherContainer.setVisibility(View.GONE);
         }

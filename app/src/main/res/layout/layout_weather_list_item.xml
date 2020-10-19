@@ -8,11 +8,11 @@
 
         <ImageView
             android:id="@+id/ivLocation"
-            android:layout_width="@dimen/dimen30"
-            android:layout_height="@dimen/dimen30"
+            android:layout_width="@dimen/dimen40"
+            android:layout_height="@dimen/dimen40"
             android:layout_marginStart="@dimen/dimen20"
             android:layout_marginTop="@dimen/dimen20"
-            android:src="@drawable/ic_temperature"
+            android:src="@drawable/ic_location"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

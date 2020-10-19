@@ -81,22 +81,22 @@ public class WeatherDataSource {
                 });
     }
 
-    public void getAllBookmarkDB(MutableLiveData<ArrayList<Weather>> weatherListMutableData){
+    public void getAllBookmarkDB(MutableLiveData<ArrayList<Weather>> weatherListMutableData) {
         weatherListMutableData.setValue(localDataSource.runGetAllWeatherQuery());
     }
 
-    public void getBookmarkByIdDB(Weather weather){
+    public void getBookmarkByIdDB(Weather weather) {
         localDataSource.runGetWeatherQuery(weather.getId());
     }
 
-    public void saveBookmarkDB(Weather weather){
+    public void saveBookmarkDB(Weather weather) {
         Gson gson = new Gson();
-        String values =  String.valueOf(weather.getId()) + ",'" + gson.toJson(weather) + "'";
+        String values = String.valueOf(weather.getId()) + ",'" + gson.toJson(weather) + "'";
         localDataSource.runDeleteWeatherQuery(weather.getId());
         localDataSource.runCreateWeatherQuery(values);
     }
 
-    public void deleteBookmarkDB(Weather weather){
+    public void deleteBookmarkDB(Weather weather) {
         localDataSource.runDeleteWeatherQuery(weather.getId());
     }
 }
