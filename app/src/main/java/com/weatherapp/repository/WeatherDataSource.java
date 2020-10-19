@@ -61,7 +61,7 @@ public class WeatherDataSource {
         weatherApi.getWeatherByLocation(lat, lng, BuildConfig.API_KEY, "metric")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<Weather>() {
+                .subscribe(new DisposableSingleObserver<Weather>() {
                     @Override
                     public void onSuccess(Weather weatherResponse) {
                         if (weatherResponse != null) {
